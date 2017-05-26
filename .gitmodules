@@ -1,0 +1,9 @@
+[submodule "portal-config"]
+	path = portal-config
+	url = https://github.com/stainii/portal-config
+[submodule "portal-config-data"]
+	path = portal-config-data
+	url = https://github.com/stainii/portal-config-data
+[submodule "portal-front-end-core"]
+	path = portal-front-end-core
+	url = https://github.com/stainii/portal-front-end-core
