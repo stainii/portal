@@ -12,5 +12,6 @@
     <modules>
         <module>portal-config</module>
         <module>portal-front-end-core</module>
+        <module>portal-housagotchi</module>
     </modules>
 </project>

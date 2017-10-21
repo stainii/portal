@@ -7,3 +7,6 @@
 [submodule "portal-front-end-core"]
 	path = portal-front-end-core
 	url = https://github.com/stainii/portal-front-end-core
+[submodule "portal-housagotchi"]
+	path = portal-housagotchi
+	url = https://github.com/stainii/portal-housagotchi.git
