@@ -10,7 +10,9 @@
     <packaging>pom</packaging>
 
     <modules>
+	    <module>portal-config-data</module>
         <module>portal-config</module>
+	    <module>portal-front-end-library</module>
         <module>portal-front-end-core</module>
         <module>portal-housagotchi</module>
     </modules>
