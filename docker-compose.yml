@@ -1,0 +1,35 @@
+version: '3'
+services:
+  portal-core-db:
+    image: postgres
+    volumes:
+      - /app/portal/core/db/data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: portal-core
+      POSTGRES_PASSWORD: test123
+      POSTGRES_DB: portal-core
+
+  portal-housagotchi-db:
+    image: postgres
+    volumes:
+      - /app/portal/housagotchi/db/data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: portal-housagotchi
+      POSTGRES_PASSWORD: test123
+      POSTGRES_DB: portal-housagotchi
+
+  portal-notifications-db:
+      image: postgres
+      volumes:
+        - /app/portal/notifications/db/data:/var/lib/postgresql/data
+      ports:
+        - "5434:5432"
+      environment:
+        POSTGRES_USER: portal-notifications
+        POSTGRES_PASSWORD: test123
+        POSTGRES_DB: portal-notifications
+

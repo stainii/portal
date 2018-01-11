@@ -10,3 +10,6 @@
 [submodule "portal-housagotchi"]
 	path = portal-housagotchi
 	url = https://github.com/stainii/portal-housagotchi.git
+[submodule "portal-notifications"]
+	path = portal-notifications
+	url = https://github.com/stainii/portal-notifications.git

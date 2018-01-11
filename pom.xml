@@ -14,6 +14,7 @@
         <module>portal-config</module>
 	    <module>portal-front-end-library</module>
         <module>portal-front-end-core</module>
+        <module>portal-notifications</module>
         <module>portal-housagotchi</module>
     </modules>
 </project>
