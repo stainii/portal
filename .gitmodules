@@ -13,3 +13,18 @@
 [submodule "portal-notifications"]
 	path = portal-notifications
 	url = https://github.com/stainii/portal-notifications.git
+[submodule "portal-model"]
+	path = portal-model
+	url = https://github.com/stainii/portal-model
+[submodule "portal-eureka"]
+	path = portal-eureka
+	url = https://github.com/stainii/portal-eureka.git
+[submodule "portal-front-end-library"]
+	path = portal-front-end-library
+	url = https://github.com/stainii/portal-front-end-library
+[submodule "portal-notifications-email-plugin"]
+	path = portal-notifications-email-plugin
+	url = https://github.com/stainii/portal-notifications-email-plugin
+[submodule "portal-notifications-model"]
+	path = portal-notifications-model
+	url = https://github.com/stainii/portal-notifications-model

@@ -1,0 +1,52 @@
+version: '3'
+services:
+  portal-eureka:
+    image: stainii/portal-eureka:1.0.0-SNAPSHOT
+    volumes:
+      - /app/portal/eureka:/tmp
+    ports:
+      - 8761:8761
+
+  portal-core-db:
+    image: postgres
+    volumes:
+      - /app/portal/core/db/data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: portal-core
+      POSTGRES_PASSWORD: test123
+      POSTGRES_DB: portal-core
+
+  portal-housagotchi-db:
+    image: postgres
+    volumes:
+      - /app/portal/housagotchi/db/data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: portal-housagotchi
+      POSTGRES_PASSWORD: test123
+      POSTGRES_DB: portal-housagotchi
+
+  portal-notifications-db:
+      image: postgres
+      volumes:
+        - /app/portal/notifications/db/data:/var/lib/postgresql/data
+      ports:
+        - "5434:5432"
+      environment:
+        POSTGRES_USER: portal-notifications
+        POSTGRES_PASSWORD: test123
+        POSTGRES_DB: portal-notifications
+
+  portal-rabbitmq:
+      image: "rabbitmq:3-management"
+      hostname: "rabbit"
+      ports:
+        - "15672:15672"
+        - "5672:5672"
+      labels:
+        NAME: "rabbitmq"
+      volumes:
+        - /app/portal/rabittmq/rabbitmq-isolated.conf:/etc/rabbitmq/rabbitmq.config
