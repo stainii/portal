@@ -27,14 +27,12 @@ services:
       POSTGRES_PASSWORD: test123
       POSTGRES_DB: portal-core
 
-
   portal-core-app:
     image: stainii/portal-front-end-core:1.0.0-SNAPSHOT
     volumes:
       - /app/portal/core/app/:/tmp
     ports:
       - 2001:2001
-
 
   portal-housagotchi-db:
     image: postgres
@@ -47,14 +45,12 @@ services:
       POSTGRES_PASSWORD: test123
       POSTGRES_DB: portal-housagotchi
 
-
   portal-housagotchi-app:
     image: stainii/portal-housagotchi:1.0.0-SNAPSHOT
     volumes:
       - /app/portal/housagotchi/app/:/tmp
     ports:
       - 2002:2002
-
 
   portal-notifications-db:
       image: postgres
@@ -67,14 +63,12 @@ services:
         POSTGRES_PASSWORD: test123
         POSTGRES_DB: portal-notifications
 
-
   portal-notifications-app:
     image: stainii/portal-notifications:1.0.0-SNAPSHOT
     volumes:
       - /app/portal/notifications/app/:/tmp
     ports:
       - 2003:2003
-
 
   portal-notifications-email-plugin:
     image: stainii/portal-notifications-email-plugin:1.0.0-SNAPSHOT

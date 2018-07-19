@@ -1,0 +1,43 @@
+Portal
+------
+------
+
+1. Go to portal.azure.com.
+2. Request a shell (right-top)
+3. ssh portal@stijnhooftportal.westeurope.cloudapp.azure.com
+4. enter password (*******po)
+5. ls => you will see that the docker-compose.yml file is here
+
+
+
+
+CI
+--
+--
+
+Password: ********ci
+
+How was it set up?
+------------------
+1) install docker: https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04
+2) docker volume create jenkins-volume
+3) docker run -p 80:8080 \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v jenkins-volume:/var/jenkins_home \
+  --name jenkins \
+  -u root \
+  jenkins/jenkins:lts
+4) docker exec -it bash in de Jenkins docker container
+5) apt-get update && \
+apt-get -y install apt-transport-https \
+     ca-certificates \
+     curl \
+     gnupg2 \
+     software-properties-common && \
+curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; echo "$ID")/gpg > /tmp/dkey; apt-key add /tmp/dkey && \
+add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/$(. /etc/os-release; echo "$ID") \
+   $(lsb_release -cs) \
+   stable" && \
+apt-get update && \
+apt-get -y install docker-ce
