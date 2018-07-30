@@ -12,9 +12,7 @@
     <modules>
         <module>portal-model</module>
         <module>portal-eureka</module>
-	    <module>portal-config-data</module>
         <module>portal-config</module>
-	    <module>portal-front-end-library</module>
         <module>portal-front-end-core</module>
         <module>portal-notifications-model</module>
         <module>portal-notifications</module>
