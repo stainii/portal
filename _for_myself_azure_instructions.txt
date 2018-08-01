@@ -17,18 +17,20 @@ CI
 
 Password: ********ci
 
-How was it set up?
-------------------
 1) install docker: https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04
-2) docker volume create jenkins-volume
-3) docker run -p 80:8080 \
+2) docker network create ci-network
+3) docker volume create jenkins-volume
+4) docker run -p 80:8080 \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v jenkins-volume:/var/jenkins_home \
   --name jenkins \
   -u root \
+  --network ci-network \
   jenkins/jenkins:lts
-4) docker exec -it bash in de Jenkins docker container
-5) apt-get update && \
+5) docker exec -it bash in de Jenkins docker container
+6) in the container, execute
+
+apt-get update && \
 apt-get -y install apt-transport-https \
      ca-certificates \
      curl \
@@ -41,3 +43,21 @@ add-apt-repository \
    stable" && \
 apt-get update && \
 apt-get -y install docker-ce
+
+7) back in host:
+docker run -d -p 8081:8081 --name nexus --network ci-network sonatype/nexus3
+
+8) Jenkins: install https://wiki.jenkins.io/display/JENKINS/Embeddable+Build+Status+Plugin
+
+9) Open ports 9000, 9092 and 8081
+
+10) Open Nexus (port 8081). Log in with "admin" and "admin123". Change the password.
+
+11) Configure your local Maven to know this Nexus server with the right credentials.
+<servers>
+    <server>
+  	    <id>portal-ci-nexus-releases</id>
+  	    <username>admin</username>
+        <password>******</password>
+    </server>
+</servers>

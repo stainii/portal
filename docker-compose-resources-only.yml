@@ -1,7 +1,7 @@
 version: '3'
 services:
   portal-eureka:
-    image: stainii/portal-eureka:1.0.0-SNAPSHOT
+    image: stainii/portal-eureka:1.0.0
     volumes:
       - /app/portal/eureka:/tmp
     ports:

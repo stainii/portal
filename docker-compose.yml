@@ -1,7 +1,7 @@
 version: '3'
 services:
   portal-eureka:
-    image: stainii/portal-eureka:1.0.0-SNAPSHOT
+    image: stainii/portal-eureka:1.0.0
     volumes:
       - /app/portal/eureka:/tmp
     ports:
@@ -10,7 +10,7 @@ services:
       - "8761"
 
   portal-config:
-    image: stainii/portal-config:1.0.0-SNAPSHOT
+    image: stainii/portal-config:1.0.0
     volumes:
       - /app/portal/config/app/:/tmp
     ports:
@@ -28,7 +28,7 @@ services:
       POSTGRES_DB: portal-core
 
   portal-core-app:
-    image: stainii/portal-front-end-core:1.0.0-SNAPSHOT
+    image: stainii/portal-front-end-core:1.0.0
     volumes:
       - /app/portal/core/app/:/tmp
     ports:
@@ -46,7 +46,7 @@ services:
       POSTGRES_DB: portal-housagotchi
 
   portal-housagotchi-app:
-    image: stainii/portal-housagotchi:1.0.0-SNAPSHOT
+    image: stainii/portal-housagotchi:1.0.0
     volumes:
       - /app/portal/housagotchi/app/:/tmp
     ports:
@@ -71,7 +71,7 @@ services:
       - 2003:2003
 
   portal-notifications-email-plugin:
-    image: stainii/portal-notifications-email-plugin:1.0.0-SNAPSHOT
+    image: stainii/portal-notifications-email-plugin:1.0.0
     volumes:
       - /app/portal/notifications/email-plugin/:/tmp
     ports:

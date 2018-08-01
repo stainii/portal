@@ -29,5 +29,12 @@ Since modules should be easily removed/replaced/introduced, it's important for m
 
  **In case that synchronous communication is required**, for example for queries of other modules so that information can be shown in the front-end, **REST  webservices should be used**. 
 
+
+### Release
+To release a module, this project makes use of the JGitflow plugin.
+More information can be found [here](https://gist.github.com/lemiorhan/97b4f827c08aed58a9d8).
+
+At the moment, releases are made on a local machine. No Jenkins job has been made (yet).
+ 
 ### Helpful resources
 * [List of Pluralsight courses](https://app.pluralsight.com/channels/details/f975a3ba-648f-401a-851c-0ab47fe552c1?s=1), explaining how to use the technologies and frameworks used by this portal.
