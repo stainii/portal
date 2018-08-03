@@ -24,15 +24,17 @@ services:
       - "5432:5432"
     environment:
       POSTGRES_USER: portal-core
-      POSTGRES_PASSWORD: test123
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: portal-core
 
   portal-core-app:
-    image: stainii/portal-front-end-core:1.0.0
+    image: stainii/portal-front-end-core:1.0.1-SNAPSHOT
     volumes:
       - /app/portal/core/app/:/tmp
     ports:
       - 2001:2001
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
 
   portal-housagotchi-db:
     image: postgres
@@ -42,15 +44,17 @@ services:
       - 5433:5432
     environment:
       POSTGRES_USER: portal-housagotchi
-      POSTGRES_PASSWORD: test123
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: portal-housagotchi
 
   portal-housagotchi-app:
-    image: stainii/portal-housagotchi:1.0.0
+    image: stainii/portal-housagotchi:1.0.1-SNAPSHOT
     volumes:
       - /app/portal/housagotchi/app/:/tmp
     ports:
       - 2002:2002
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
 
   portal-notifications-db:
       image: postgres
@@ -60,7 +64,7 @@ services:
         - "5434:5432"
       environment:
         POSTGRES_USER: portal-notifications
-        POSTGRES_PASSWORD: test123
+        POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
         POSTGRES_DB: portal-notifications
 
   portal-notifications-app:
@@ -69,6 +73,8 @@ services:
       - /app/portal/notifications/app/:/tmp
     ports:
       - 2003:2003
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
 
   portal-notifications-email-plugin:
     image: stainii/portal-notifications-email-plugin:1.0.0

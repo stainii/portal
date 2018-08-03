@@ -6,3 +6,6 @@ target
 etc/
 node/
 src/test/
+
+#secret files
+.env

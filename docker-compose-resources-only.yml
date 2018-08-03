@@ -15,7 +15,7 @@ services:
       - "5432:5432"
     environment:
       POSTGRES_USER: portal-core
-      POSTGRES_PASSWORD: test123
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: portal-core
 
   portal-housagotchi-db:
@@ -26,7 +26,7 @@ services:
       - "5433:5432"
     environment:
       POSTGRES_USER: portal-housagotchi
-      POSTGRES_PASSWORD: test123
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: portal-housagotchi
 
   portal-notifications-db:
@@ -37,7 +37,7 @@ services:
         - "5434:5432"
       environment:
         POSTGRES_USER: portal-notifications
-        POSTGRES_PASSWORD: test123
+        POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
         POSTGRES_DB: portal-notifications
 
   portal-rabbitmq:
