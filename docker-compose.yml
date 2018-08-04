@@ -77,11 +77,21 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
 
   portal-notifications-email-plugin:
-    image: stainii/portal-notifications-email-plugin:1.0.0
+    image: stainii/portal-notifications-email-plugin:1.0.1-SNAPSHOT
     volumes:
       - /app/portal/notifications/email-plugin/:/tmp
     ports:
       - 2004:2004
+    environment:
+      EMAIL_RECIPIENT: ${EMAIL_RECIPIENT}
+      EMAIL_SENDER: ${EMAIL_SENDER}
+      EMAIL_SUBJECT: ${EMAIL_SUBJECT}
+      EMAIL_HOST: ${EMAIL_HOST}
+      EMAIL_PORT: ${EMAIL_PORT}
+      EMAIL_USERNAME: ${EMAIL_USERNAME}
+      EMAIL_PASSWORD: ${EMAIL_PASSWORD}
+      EMAIL_SMTP_AUTH: ${EMAIL_SMTP_AUTH}
+      EMAIL_STARTTLS: ${EMAIL_STARTTLS}
 
   portal-rabbitmq:
     image: "rabbitmq:3-management"
