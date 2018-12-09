@@ -53,11 +53,18 @@ docker run -d -p 8081:8081 --name nexus --network ci-network sonatype/nexus3
 
 10) Open Nexus (port 8081). Log in with "admin" and "admin123". Change the password.
 
-11) Configure your local Maven to know this Nexus server with the right credentials.
+11) Create a task that removes unused snapshots.
+
+12) Configure your local Maven to know this Nexus server with the right credentials.
 <servers>
     <server>
   	    <id>portal-ci-nexus-releases</id>
   	    <username>admin</username>
         <password>******</password>
     </server>
+    <server>
+      	    <id>portal-ci-nexus-snapshots</id>
+      	    <username>admin</username>
+            <password>******</password>
+        </server>
 </servers>

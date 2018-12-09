@@ -1,4 +1,4 @@
-FROM maven:3-jdk-8-slim
+FROM maven:3-jdk-11-slim
 
 RUN apt-get update && \
     apt install -y curl software-properties-common gnupg2 && \

@@ -1,12 +1,12 @@
-[submodule "portal-config"]
-	path = portal-config
-	url = https://github.com/stainii/portal-config
-[submodule "portal-config-data"]
-	path = portal-config-data
-	url = https://github.com/stainii/portal-config-data
-[submodule "portal-front-end-core"]
-	path = portal-front-end-core
-	url = https://github.com/stainii/portal-front-end-core
+[submodule "portal-authentication"]
+	path = portal-authentication
+	url = https://github.com/stainii/portal-authentication
+[submodule "portal-eureka"]
+	path = portal-eureka
+	url = https://github.com/stainii/portal-eureka.git
+[submodule "portal-front-end"]
+	path = portal-front-end
+	url = https://github.com/stainii/portal-front-end
 [submodule "portal-housagotchi"]
 	path = portal-housagotchi
 	url = https://github.com/stainii/portal-housagotchi.git
@@ -16,15 +16,12 @@
 [submodule "portal-model"]
 	path = portal-model
 	url = https://github.com/stainii/portal-model
-[submodule "portal-eureka"]
-	path = portal-eureka
-	url = https://github.com/stainii/portal-eureka.git
-[submodule "portal-front-end-library"]
-	path = portal-front-end-library
-	url = https://github.com/stainii/portal-front-end-library
 [submodule "portal-notifications-email-plugin"]
 	path = portal-notifications-email-plugin
 	url = https://github.com/stainii/portal-notifications-email-plugin
 [submodule "portal-notifications-model"]
 	path = portal-notifications-model
 	url = https://github.com/stainii/portal-notifications-model
+[submodule "portal-proxy"]
+	path = portal-proxy
+	url = https://github.com/stainii/portal-proxy

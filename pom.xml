@@ -12,11 +12,12 @@
     <modules>
         <module>portal-model</module>
         <module>portal-eureka</module>
-        <module>portal-config</module>
-        <module>portal-front-end-core</module>
+        <module>portal-proxy</module>
+        <module>portal-front-end</module>
         <module>portal-notifications-model</module>
         <module>portal-notifications</module>
         <module>portal-notifications-email-plugin</module>
         <module>portal-housagotchi</module>
+        <module>portal-authentication</module>
     </modules>
 </project>
