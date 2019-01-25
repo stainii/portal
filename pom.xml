@@ -20,4 +20,19 @@
         <module>portal-housagotchi</module>
         <module>portal-authentication</module>
     </modules>
+
+    <repositories>
+        <repository>
+            <id>portal-nexus-releases</id>
+            <url>https://server.stijnhooft.be/nexus/repository/maven-releases/</url>
+        </repository>
+    </repositories>
+
+    <distributionManagement>
+        <repository>
+            <id>portal-nexus-snapshots</id>
+            <url>https://server.stijnhooft.be/nexus/repository/maven-snapshots/</url>
+        </repository>
+    </distributionManagement>
+
 </project>
