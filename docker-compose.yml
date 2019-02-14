@@ -27,7 +27,7 @@ services:
           memory: 100M
 
   portal-front-end-app:
-    image: stainii/portal-front-end:2.0.0-SNAPSHOT
+    image: stainii/portal-front-end:2.0.0
     volumes:
     - /app/portal/front-end/app/:/tmp
     ports:
@@ -57,7 +57,7 @@ services:
           memory: 100M
 
   portal-housagotchi-app:
-    image: stainii/portal-housagotchi:2.0.0
+    image: stainii/portal-housagotchi:2.0.1
     volumes:
     - /app/portal/housagotchi/app/:/tmp
     ports:
@@ -86,7 +86,7 @@ services:
           memory: 100M
 
   portal-notifications-app:
-    image: stainii/portal-notifications:1.0.1-SNAPSHOT
+    image: stainii/portal-notifications:1.0.1
     volumes:
     - /app/portal/notifications/app/:/tmp
     ports:
