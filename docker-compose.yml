@@ -94,7 +94,7 @@ services:
     environment:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       JAVA_OPTS_PORTAL_NOTIFICATIONS: ${JAVA_OPTS_PORTAL_NOTIFICATIONS}
-      BASE_URL: ${BASE_URL}
+      BASE_URL: ${BASE_URL}notification/
     deploy:
       resources:
         limits:
