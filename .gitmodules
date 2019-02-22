@@ -25,3 +25,6 @@
 [submodule "portal-proxy"]
 	path = portal-proxy
 	url = https://github.com/stainii/portal-proxy
+[submodule "portal-image-editor"]
+    path = portal-image-editor
+    url = https://github.com/stainii/portal-image-editor
