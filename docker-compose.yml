@@ -27,7 +27,7 @@ services:
           memory: 100M
 
   portal-front-end-app:
-    image: stainii/portal-front-end:2.0.0
+    image: stainii/portal-front-end:2.0.1
     volumes:
     - /app/portal/front-end/app/:/tmp
     ports:
@@ -57,7 +57,7 @@ services:
           memory: 100M
 
   portal-housagotchi-app:
-    image: stainii/portal-housagotchi:2.0.1
+    image: stainii/portal-housagotchi:2.0.2
     volumes:
     - /app/portal/housagotchi/app/:/tmp
     ports:
@@ -137,28 +137,6 @@ services:
         limits:
           memory: 512M
 
-  portal-image-editor:
-    image: stainii/portal-image-editor:1.0.0-SNAPSHOT
-    environment:
-      docker: "true"
-    ports:
-    - 2005:8080
-    deploy:
-      resources:
-        limits:
-          memory: 100M
-
-  portal-image-editor-swagger:
-    image: swaggerapi/swagger-ui
-    environment:
-      API_URL: "http://localhost:2005/swagger/"
-    ports:
-    - 20050:8080
-    deploy:
-      resources:
-        limits:
-          memory: 100M
-
   portal-authentication-db:
     image: "postgres:11.0"
     volumes:
@@ -201,3 +179,15 @@ services:
       resources:
         limits:
           memory: 300M
+
+  portal-image-editor:
+    image: stainii/portal-image-editor:1.0.0-SNAPSHOT
+    ports:
+      - 3000:3000
+    environment:
+      HOSTNAME: portal-image-editor
+      EUREKA_HOST: portal-eureka
+    deploy:
+      resources:
+        limits:
+          memory: 100M
