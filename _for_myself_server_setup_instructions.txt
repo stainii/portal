@@ -1,22 +1,6 @@
-Portal
-------
-------
-
-1. Go to portal.azure.com.
-2. Request a shell (right-top)
-3. ssh portal@stijnhooftportal.westeurope.cloudapp.azure.com
-4. enter password (*******po)
-5. ls => you will see that the docker-compose.yml file is here
-
-
-
-
 CI
 --
 --
-
-Password: ********ci
-
 1) install docker: https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04
 2) docker network create ci-network
 3) docker volume create jenkins-volume

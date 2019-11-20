@@ -4,7 +4,7 @@ services:
   portal-front-end-db:
     image: "postgres:10.5"
     volumes:
-    - /app/portal/front-end/db/data:/var/lib/postgresql/data
+    - portal-front-end-db:/var/lib/postgresql/data
     ports:
     - "5432:5432"
     environment:
@@ -19,7 +19,7 @@ services:
   portal-housagotchi-db:
     image: "postgres:10.5"
     volumes:
-    - /app/portal/housagotchi/db/data:/var/lib/postgresql/data
+    - portal-housagotchi-db:/var/lib/postgresql/data
     ports:
     - "5433:5432"
     environment:
@@ -34,7 +34,7 @@ services:
   portal-notifications-db:
     image: "postgres:10.5"
     volumes:
-    - /app/portal/notifications/db/data:/var/lib/postgresql/data
+    - portal-notifications-db:/var/lib/postgresql/data
     ports:
     - "5434:5432"
     environment:
@@ -55,7 +55,7 @@ services:
     labels:
       NAME: "rabbitmq"
     volumes:
-    - /app/portal/rabbitmq/rabbitmq-isolated.conf:/etc/rabbitmq/rabbitmq.config
+    - portal-rabbitmq:/etc/rabbitmq/rabbitmq.config
     deploy:
       resources:
         limits:
@@ -64,7 +64,7 @@ services:
   portal-authentication-db:
     image: "postgres:11.0"
     volumes:
-    - /app/portal/authentication/db/data:/var/lib/postgresql/data
+    - portal-authentication-db:/var/lib/postgresql/data
     ports:
     - "5435:5432"
     environment:
@@ -75,3 +75,33 @@ services:
       resources:
         limits:
           memory: 50M
+
+  portal-todo-db:
+    image: "mongo:4.2.1"
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_DATABASE=${DATABASE_NAME_TODO}
+      - MONGO_INITDB_ROOT_USERNAME=${DATABASE_USERNAME_TODO}
+      - MONGO_INITDB_ROOT_PASSWORD=${DATABASE_PASSWORD_TODO}
+    volumes:
+      - /c/Users/SHFAR21/OneDrive/Documenten/projecten/portal/portal-todo/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d:ro
+      - portal-todo-db:/data
+    deploy:
+      resources:
+        limits:
+          memory: 50M
+
+volumes:
+  portal-front-end-db:
+    external: true
+  portal-housagotchi-db:
+      external: true
+  portal-notifications-db:
+      external: true
+  portal-authentication-db:
+      external: true
+  portal-todo-db:
+    external: true
+  portal-rabbitmq:
+    external: true

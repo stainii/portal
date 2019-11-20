@@ -19,6 +19,7 @@
         <module>portal-notifications-email-plugin</module>
         <module>portal-housagotchi</module>
         <module>portal-authentication</module>
+        <module>portal-todo</module>
     </modules>
 
     <repositories>

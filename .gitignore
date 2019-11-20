@@ -6,6 +6,8 @@ target
 etc/
 node/
 src/test/
+docker-compose-for-swarm.yml
 
 #secret files
 .env
+_for_myself_server_setup_instructions.txt

@@ -44,7 +44,7 @@ While this seems contradictory to backend's microservice approach, I have [good 
 You can run the Spring Boot applications from your IDE. If you need to have a running database/eureka/..., use
 
 1. `docker swarm init` (if you did not do this before)
-1. `docker-compose -f docker-compose-resources-only.yml config > docker-compose-for-swarm.yml && docker stack deploy -c docker-compose-for-swarm.yml portal-resouces-only`
+1. `docker-compose -f docker-compose-resources-only.yml config > docker-compose-for-swarm.yml && docker stack deploy -c docker-compose-for-swarm.yml portal-resources-only`
 
 ### Release
 To release a module, this project makes use of the JGitflow plugin.
