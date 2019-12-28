@@ -86,7 +86,7 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=${DATABASE_PASSWORD_TODO}
     volumes:
       - /c/Users/SHFAR21/OneDrive/Documenten/projecten/portal/portal-todo/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d:ro
-      - portal-todo-db:/data
+      - portal-todo-db:/data/db
     deploy:
       resources:
         limits:
