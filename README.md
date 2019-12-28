@@ -46,11 +46,5 @@ You can run the Spring Boot applications from your IDE. If you need to have a ru
 1. `docker swarm init` (if you did not do this before)
 1. `docker-compose -f docker-compose-resources-only.yml config > docker-compose-for-swarm.yml && docker stack deploy -c docker-compose-for-swarm.yml portal-resources-only`
 
-### Release
-To release a module, this project makes use of the JGitflow plugin.
-More information can be found [here](https://gist.github.com/lemiorhan/97b4f827c08aed58a9d8).
-
-At the moment, releases are made on a local machine. No Jenkins job has been made (yet).
-
 ### Helpful resources
 * [List of Pluralsight courses](https://app.pluralsight.com/channels/details/f975a3ba-648f-401a-851c-0ab47fe552c1?s=1), explaining how to use the technologies and frameworks used by this portal.
