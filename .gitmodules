@@ -31,3 +31,6 @@
 [submodule "portal-portfolio"]
         path = portal-portfolio
         url = https://github.com/stainii/portal-portfolio
+[submodule "portal-todo"]
+        path = portal-todo
+        url = https://github.com/stainii/portal-todo
