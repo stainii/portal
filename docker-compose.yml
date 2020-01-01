@@ -241,7 +241,7 @@ portal-portfolio-db:
       - MONGO_INITDB_ROOT_PASSWORD=${DATABASE_PASSWORD_TODO}
     volumes:
       - /home/stijn/portal/todo/db/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d:ro
-      - /app/portal/todo/db/:/var/lib/postgresql/data
+      - /home/stijn/portal/todo/db/data/:/data/db
     deploy:
       resources:
         limits:
