@@ -17,9 +17,9 @@
         <module>portal-notifications-model</module>
         <module>portal-notifications</module>
         <module>portal-notifications-email-plugin</module>
-        <module>portal-housagotchi</module>
         <module>portal-authentication</module>
         <module>portal-todo</module>
+        <module>portal-recurring-tasks</module>
     </modules>
 
     <repositories>

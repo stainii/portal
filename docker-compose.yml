@@ -58,13 +58,19 @@ services:
           memory: 100M
 
   portal-housagotchi-app:
-    image: stainii/portal-housagotchi:2.0.3
+    image: stainii/portal-recurring-tasks:1.0.0-SNAPSHOT
     volumes:
       - /app/portal/housagotchi/app/:/tmp
     ports:
       - 2002:2002
     environment:
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      DEPLOYMENT_NAME: Housagotchi
+      POSTGRES_USERNAME: ${POSTGRES_USERNAME_HOUSAGOTCHI}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD_HOUSAGOTCHI}
+      RABBITMQ_HOST: ${RABBITMQ_HOST}
+      RABBITMQ_PORT: ${RABBITMQ_PORT}
+      RABBITMQ_USERNAME: ${RABBITMQ_USERNAME}
+      RABBITMQ_PASSWORD: ${RABBITMQ_PASSWORD}
       JAVA_OPTS_HOUSAGOTCHI: ${JAVA_OPTS_HOUSAGOTCHI}
       EUREKA_SERVICE_URL: ${EUREKA_SERVICE_URL}
     deploy:
