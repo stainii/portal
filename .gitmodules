@@ -7,9 +7,9 @@
 [submodule "portal-front-end"]
 	path = portal-front-end
 	url = https://github.com/stainii/portal-front-end
-[submodule "portal-housagotchi"]
-	path = portal-housagotchi
-	url = https://github.com/stainii/portal-housagotchi.git
+[submodule "portal-recurring-tasks"]
+	path = portal-recurring-tasks
+	url = https://github.com/stainii/portal-recurring-tasks.git
 [submodule "portal-notifications"]
 	path = portal-notifications
 	url = https://github.com/stainii/portal-notifications.git
