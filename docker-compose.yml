@@ -3,7 +3,8 @@ services:
   portal-eureka:
     image: stainii/portal-eureka:1.0.2
     volumes:
-      - /app/portal/eureka:/tmp
+      - portal-eureka:/tmp
+      #- /app/portal/eureka:/tmp
     ports:
       - 8761:8761
     deploy:
@@ -14,7 +15,8 @@ services:
   portal-front-end-db:
     image: "postgres:10.5"
     volumes:
-      - /app/portal/front-end/db/data:/var/lib/postgresql/data
+      - portal-front-end-db:/var/lib/postgresql/data
+      #- /app/portal/front-end/db/data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
     environment:
@@ -29,7 +31,8 @@ services:
   portal-front-end-app:
     image: stainii/portal-front-end:2.1.0
     volumes:
-      - /app/portal/front-end/app/:/tmp
+      - portal-front-end-app:/tmp
+      #- /app/portal/front-end/app/:/tmp
     ports:
       - 2001:2001
     environment:
@@ -45,7 +48,8 @@ services:
   portal-housagotchi-db:
     image: "postgres:10.5"
     volumes:
-      - /app/portal/housagotchi/db/data:/var/lib/postgresql/data
+      - portal-housagotchi-db:/var/lib/postgresql/data
+      #- /app/portal/housagotchi/db/data:/var/lib/postgresql/data
     ports:
       - 5433:5432
     environment:
@@ -60,11 +64,13 @@ services:
   portal-housagotchi-app:
     image: stainii/portal-recurring-tasks:1.0.0-SNAPSHOT
     volumes:
-      - /app/portal/housagotchi/app/:/tmp
+      - portal-housagotchi-app/:/tmp
+      #- /app/portal/housagotchi/app/:/tmp
     ports:
       - 2002:2002
     environment:
       DEPLOYMENT_NAME: Housagotchi
+      POSTGRES_URL: ${POSTGRES_URL_HOUSAGOTCHI}
       POSTGRES_USERNAME: ${POSTGRES_USERNAME_HOUSAGOTCHI}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD_HOUSAGOTCHI}
       RABBITMQ_HOST: ${RABBITMQ_HOST}
@@ -75,13 +81,14 @@ services:
       EUREKA_SERVICE_URL: ${EUREKA_SERVICE_URL}
     deploy:
       resources:
-        limits:
+        limits:p
           memory: 400M
 
   portal-notifications-db:
     image: "postgres:10.5"
     volumes:
-      - /app/portal/notifications/db/data:/var/lib/postgresql/data
+      - portal-notifications-db:/var/lib/postgresql/data
+      #- /app/portal/notifications/db/data:/var/lib/postgresql/data
     ports:
       - "5434:5432"
     environment:
@@ -96,7 +103,8 @@ services:
   portal-notifications-app:
     image: stainii/portal-notifications:2.0.0
     volumes:
-      - /app/portal/notifications/app/:/tmp
+      - portal-notifications-app:/tmp
+      #- /app/portal/notifications/app/:/tmp
     ports:
       - 2003:2003
     environment:
@@ -112,7 +120,8 @@ services:
   portal-notifications-email-plugin:
     image: stainii/portal-notifications-email-plugin:1.0.2
     volumes:
-      - /app/portal/notifications/email-plugin/:/tmp
+      - portal-notifications-email-plugin:/tmp
+      #- /app/portal/notifications/email-plugin/:/tmp
     ports:
       - 2004:2004
     environment:
@@ -132,37 +141,37 @@ services:
         limits:
           memory: 300M
 
-portal-portfolio-db:
-  image: mongo:4.0.6
-  environment:
-    MONGO_INITDB_ROOT_USERNAME: ${DATABASE_USERNAME_PORTFOLIO}
-    MONGO_INITDB_ROOT_PASSWORD: ${DATABASE_PASSWORD_PORTFOLIO}
-    MONGO_INITDB_DATABASE: ${DATABASE_NAME_PORTFOLIO}
-    MONGODB_USER: ${DATABASE_USERNAME_PORTFOLIO}
-    MONGODB_PASS: ${DATABASE_PASSWORD_PORTFOLIO}
-  volumes:
-    - /home/stijn/portal/portfolio/db/data/:/data/db
-    - /home/stijn/portal/portfolio/db/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d:ro
-  ports:
-    - 27017:27017
+#portal-portfolio-db:
+#  image: mongo:4.0.6
+#  environment:
+#    MONGO_INITDB_ROOT_USERNAME: ${DATABASE_USERNAME_PORTFOLIO}
+#    MONGO_INITDB_ROOT_PASSWORD: ${DATABASE_PASSWORD_PORTFOLIO}
+#    MONGO_INITDB_DATABASE: ${DATABASE_NAME_PORTFOLIO}
+#    MONGODB_USER: ${DATABASE_USERNAME_PORTFOLIO}
+#    MONGODB_PASS: ${DATABASE_PASSWORD_PORTFOLIO}
+#  volumes:
+#    - /home/stijn/portal/portfolio/db/data/:/data/db
+#    - /home/stijn/portal/portfolio/db/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d:ro
+#  ports:
+#    - 27017:27017
 
-  portal-portfolio-app:
-    image: stainii/portal-portfolio:1.0.1
-    ports:
-      - 8080:8080
-    environment:
-      DATABASE_HOST_PORTFOLIO: ${DATABASE_HOST_PORTFOLIO}
-      DATABASE_PORT_PORTFOLIO: ${DATABASE_PORT_PORTFOLIO}
-      DATABASE_NAME_PORTFOLIO: ${DATABASE_NAME_PORTFOLIO}
-      DATABASE_USERNAME_PORTFOLIO: ${DATABASE_USERNAME_PORTFOLIO}
-      DATABASE_PASSWORD_PORTFOLIO: ${DATABASE_PASSWORD_PORTFOLIO}
-      JAVA_OPTS_PORTFOLIO: ${JAVA_OPTS_PORTFOLIO}
-      JWT_SECRET: ${JWT_SECRET}
-      EUREKA_SERVICE_URL: ${EUREKA_SERVICE_URL}
-    deploy:
-      resources:
-        limits:
-          memory: 400M
+#  portal-portfolio-app:
+#    image: stainii/portal-portfolio:1.0.1
+#    ports:
+#      - 8080:8080
+#    environment:
+#      DATABASE_HOST_PORTFOLIO: ${DATABASE_HOST_PORTFOLIO}
+#      DATABASE_PORT_PORTFOLIO: ${DATABASE_PORT_PORTFOLIO}
+#      DATABASE_NAME_PORTFOLIO: ${DATABASE_NAME_PORTFOLIO}
+#      DATABASE_USERNAME_PORTFOLIO: ${DATABASE_USERNAME_PORTFOLIO}
+#      DATABASE_PASSWORD_PORTFOLIO: ${DATABASE_PASSWORD_PORTFOLIO}
+#      JAVA_OPTS_PORTFOLIO: ${JAVA_OPTS_PORTFOLIO}
+#      JWT_SECRET: ${JWT_SECRET}
+#      EUREKA_SERVICE_URL: ${EUREKA_SERVICE_URL}
+#    deploy:
+#      resources:
+#        limits:
+#          memory: 400M
 
   portal-rabbitmq:
     image: "rabbitmq:3-management"
@@ -173,7 +182,8 @@ portal-portfolio-db:
     labels:
       NAME: "rabbitmq"
     volumes:
-      - /app/portal/rabbitmq/rabbitmq-isolated.conf:/etc/rabbitmq/rabbitmq.config
+      - portal-rabbitmq:/etc/rabbitmq/rabbitmq.config
+      #- /app/portal/rabbitmq/rabbitmq-isolated.conf:/etc/rabbitmq/rabbitmq.config
     deploy:
       resources:
         limits:
@@ -182,7 +192,8 @@ portal-portfolio-db:
   portal-authentication-db:
     image: "postgres:11.0"
     volumes:
-      - /app/portal/authentication/db/data:/var/lib/postgresql/data
+      - portal-authentication-db:/var/lib/postgresql/data
+      #- /app/portal/authentication/db/data:/var/lib/postgresql/data
     ports:
       - "5435:5432"
     environment:
@@ -197,7 +208,8 @@ portal-portfolio-db:
   portal-authentication-app:
     image: stainii/portal-authentication:1.0.1
     volumes:
-      - /app/portal/authentication/app/:/tmp
+      - portal-authentication-app:/tmp
+      #- /app/portal/authentication/app/:/tmp
     ports:
       - 9100:9100
     environment:
@@ -212,7 +224,7 @@ portal-portfolio-db:
   portal-proxy:
     image: stainii/portal-proxy:2.0.0
     volumes:
-      - /app/portal/proxy/:/tmp
+      - portal-proxy:/tmp
     ports:
       - 2000:2000
     environment:
@@ -224,17 +236,17 @@ portal-portfolio-db:
         limits:
           memory: 300M
 
-  portal-image-editor:
-    image: stainii/portal-image-editor:1.0.0-SNAPSHOT
-    ports:
-      - 3000:3000
-    environment:
-      HOSTNAME: portal-image-editor
-      EUREKA_HOST: portal-eureka
-    deploy:
-      resources:
-        limits:
-          memory: 100M
+#  portal-image-editor:
+#    image: stainii/portal-image-editor:1.0.0-SNAPSHOT
+#    ports:
+#      - 3000:3000
+#    environment:
+#      HOSTNAME: portal-image-editor
+#      EUREKA_HOST: portal-eureka
+#    deploy:
+#      resources:
+#        limits:
+#          memory: 100M
 
 
   portal-todo-db:
@@ -246,8 +258,10 @@ portal-portfolio-db:
       - MONGO_INITDB_ROOT_USERNAME=${DATABASE_USERNAME_TODO}
       - MONGO_INITDB_ROOT_PASSWORD=${DATABASE_PASSWORD_TODO}
     volumes:
-      - /home/stijn/portal/todo/db/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d:ro
-      - /home/stijn/portal/todo/db/data/:/data/db
+      - /c/Users/SHFAR21/OneDrive/Documenten/projecten/portal/portal-todo/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d:ro
+      - portal-todo-db:/data/db
+      #- /home/stijn/portal/todo/db/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d:ro
+      #- /home/stijn/portal/todo/db/data/:/data/db
     deploy:
       resources:
         limits:
@@ -256,7 +270,8 @@ portal-portfolio-db:
   portal-todo-app:
     image: stainii/portal-todo:1.0.0-SNAPSHOT
     volumes:
-      - /app/portal/todo/app/:/tmp
+      - portal-todo-app:/tmp
+      #- /app/portal/todo/app/:/tmp
     ports:
       - 2007:2007
     environment:
@@ -272,3 +287,33 @@ portal-portfolio-db:
       resources:
         limits:
           memory: 400M
+
+volumes:
+  portal-front-end-db:
+    external: true
+  portal-front-end-app:
+      external: true
+  portal-housagotchi-db:
+    external: true
+  portal-housagotchi-app:
+    external: true
+  portal-notifications-db:
+    external: true
+  portal-notifications-app:
+    external: true
+  portal-notifications-email-plugin:
+    external: true
+  portal-authentication-db:
+    external: true
+  portal-authentication-app:
+    external: true
+  portal-todo-db:
+    external: true
+  portal-todo-app:
+    external: true
+  portal-proxy:
+      external: true
+  portal-rabbitmq:
+    external: true
+  portal-eureka:
+    external: true
