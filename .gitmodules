@@ -25,12 +25,12 @@
 [submodule "portal-proxy"]
 	path = portal-proxy
 	url = https://github.com/stainii/portal-proxy
-[submodule "portal-image-editor"]
-    path = portal-image-editor
-    url = https://github.com/stainii/portal-image-editor
 [submodule "portal-portfolio"]
         path = portal-portfolio
         url = https://github.com/stainii/portal-portfolio
 [submodule "portal-todo"]
         path = portal-todo
         url = https://github.com/stainii/portal-todo
+[submodule "portal-image"]
+	path = portal-image
+	url = https://github.com/stainii/portal-image.git
