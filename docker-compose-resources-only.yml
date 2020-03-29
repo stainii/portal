@@ -91,6 +91,21 @@ services:
         limits:
           memory: 50M
 
+  portal-setlist-db:
+    image: "postgres:12.2"
+    volumes:
+      - portal-setlist-db:/var/lib/postgresql/data
+    ports:
+      - "5437:5432"
+    environment:
+      POSTGRES_USER: portal-setlist
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: portal-setlist
+    deploy:
+      resources:
+        limits:
+          memory: 50M
+
   portal-todo-db:
     image: "mongo:4.2.1"
     ports:
@@ -121,4 +136,6 @@ volumes:
   portal-rabbitmq:
     external: true
   portal-health-db:
+    external: true
+  portal-setlist-db:
     external: true
