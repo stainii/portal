@@ -1,0 +1,20 @@
+{
+  "name": "portal-thumbnail",
+  "version": "1.0.0",
+  "description": "",
+  "main": "thumbnail_old/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "azure-storage": "^2.10.3",
+    "durable-functions": "^1.4.1",
+    "jimp": "^0.9.6",
+    "multipart-formdata": "^1.1.0",
+    "parse-multipart": "^1.0.4",
+    "streamifier": "^0.1.1"
+  }
+}

@@ -4,9 +4,9 @@ services:
   portal-front-end-db:
     image: "postgres:10.5"
     volumes:
-    - portal-front-end-db:/var/lib/postgresql/data
+      - portal-front-end-db:/var/lib/postgresql/data
     ports:
-    - "5432:5432"
+      - "5432:5432"
     environment:
       POSTGRES_USER: ${POSTGRES_USERNAME_FRONT_END}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD_FRONT_END}
@@ -19,9 +19,9 @@ services:
   portal-housagotchi-db:
     image: "postgres:10.5"
     volumes:
-    - portal-housagotchi-db:/var/lib/postgresql/data
+      - portal-housagotchi-db:/var/lib/postgresql/data
     ports:
-    - "5433:5432"
+      - "5433:5432"
     environment:
       POSTGRES_USER: portal-housagotchi
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
@@ -34,9 +34,9 @@ services:
   portal-notifications-db:
     image: "postgres:10.5"
     volumes:
-    - portal-notifications-db:/var/lib/postgresql/data
+      - portal-notifications-db:/var/lib/postgresql/data
     ports:
-    - "5434:5432"
+      - "5434:5432"
     environment:
       POSTGRES_USER: portal-notifications
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
@@ -50,12 +50,12 @@ services:
     image: "rabbitmq:3-management"
     hostname: "rabbit"
     ports:
-    - "15672:15672"
-    - "5672:5672"
+      - "15672:15672"
+      - "5672:5672"
     labels:
       NAME: "rabbitmq"
     volumes:
-    - portal-rabbitmq:/etc/rabbitmq/rabbitmq.config
+      - portal-rabbitmq:/etc/rabbitmq/rabbitmq.config
     deploy:
       resources:
         limits:
@@ -64,9 +64,9 @@ services:
   portal-authentication-db:
     image: "postgres:11.0"
     volumes:
-    - portal-authentication-db:/var/lib/postgresql/data
+      - portal-authentication-db:/var/lib/postgresql/data
     ports:
-    - "5435:5432"
+      - "5435:5432"
     environment:
       POSTGRES_USER: portal-authentication
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
@@ -122,15 +122,45 @@ services:
         limits:
           memory: 50M
 
+  portal-social-db:
+    image: "postgres:12.2"
+    volumes:
+      - portal-social-db:/var/lib/postgresql/data
+    ports:
+      - "5438:5432"
+    environment:
+      POSTGRES_USER: portal-social
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: portal-social
+    deploy:
+      resources:
+        limits:
+          memory: 50M
+
+  portal-social-recurring-tasks-db:
+    image: "postgres:12.2"
+    volumes:
+      - portal-social-recurring-tasks-db:/var/lib/postgresql/data
+    ports:
+      - "5439:5432"
+    environment:
+      POSTGRES_USER: portal-social-recurring-tasks
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: portal-social-recurring-tasks
+    deploy:
+      resources:
+        limits:
+          memory: 50M
+
 volumes:
   portal-front-end-db:
     external: true
   portal-housagotchi-db:
-      external: true
+    external: true
   portal-notifications-db:
-      external: true
+    external: true
   portal-authentication-db:
-      external: true
+    external: true
   portal-todo-db:
     external: true
   portal-rabbitmq:
@@ -138,4 +168,8 @@ volumes:
   portal-health-db:
     external: true
   portal-setlist-db:
+    external: true
+  portal-social-db:
+    external: true
+  portal-social-recurring-tasks-db:
     external: true
