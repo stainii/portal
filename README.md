@@ -12,7 +12,7 @@ This can be done by providing these in a file called `.env`.
 * Check out the readme of every module that you use, to know what environment variables should be provided.
 
 ## Architecture
-[High level architecture diagram](https://www.lucidchart.com/documents/embeddedchart/e7931a1a-eb23-47c3-9201-74334bfb57c2)
+![High-level-architecure](documentation/high-level-architecture.png)
 
 ### The general set-up
 I expect that the functionality of the portal will **change often. It adapts to my life**.
