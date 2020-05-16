@@ -34,3 +34,6 @@
 [submodule "portal-image"]
 	path = portal-image
 	url = https://github.com/stainii/portal-image.git
+[submodule "portal-social"]
+	path = portal-social
+	url = https://github.com/stainii/portal-social.git
