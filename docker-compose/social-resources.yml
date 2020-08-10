@@ -1,0 +1,39 @@
+version: '3'
+services:
+
+  portal-social-db:
+    image: "postgres:12.2"
+    volumes:
+      - portal-social-db:/var/lib/postgresql/data
+    ports:
+      - "5440:5432"
+    environment:
+      POSTGRES_USER: portal-social
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: portal-social
+
+    deploy:
+      resources:
+        limits:
+          memory: 50M
+
+  portal-social-recurring-tasks-db:
+    image: "postgres:12.2"
+    volumes:
+      - portal-social-recurring-tasks-db:/var/lib/postgresql/data
+    ports:
+      - "5439:5432"
+    environment:
+      POSTGRES_USER: portal-social-recurring-tasks
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: portal-social-recurring-tasks
+    deploy:
+      resources:
+        limits:
+          memory: 50M
+
+volumes:
+  portal-social-db:
+    external: true
+  portal-social-recurring-tasks-db:
+    external: true

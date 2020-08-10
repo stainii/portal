@@ -1,0 +1,21 @@
+version: '3'
+services:
+
+  portal-health-db:
+    image: "postgres:12.1"
+    volumes:
+      - portal-health-db:/var/lib/postgresql/data
+    ports:
+      - "5436:5432"
+    environment:
+      POSTGRES_USER: portal-health
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: portal-health
+    deploy:
+      resources:
+        limits:
+          memory: 50M
+
+volumes:
+  portal-health-db:
+    external: true

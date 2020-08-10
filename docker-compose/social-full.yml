@@ -1,0 +1,86 @@
+version: '3'
+services:
+
+  portal-social-app:
+    image: stainii/portal-social:1.0.0-SNAPSHOT
+    volumes:
+      - portal-social-app/:/tmp
+    ports:
+      - 2011:2011
+    environment:
+      POSTGRES_URL: ${POSTGRES_URL_SOCIAL}
+      POSTGRES_USERNAME: ${POSTGRES_USERNAME_SOCIAL}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD_SOCIAL}
+      RABBITMQ_HOST: ${RABBITMQ_HOST}
+      RABBITMQ_PORT: ${RABBITMQ_PORT}
+      RABBITMQ_USERNAME: ${RABBITMQ_USERNAME}
+      RABBITMQ_PASSWORD: ${RABBITMQ_PASSWORD}
+      JAVA_OPTS_SOCIAL: ${JAVA_OPTS_SOCIAL}
+      EUREKA_SERVICE_URL: ${EUREKA_SERVICE_URL}
+    deploy:
+      resources:
+        limits:
+          memory: 400M
+
+  portal-social-db:
+    image: "postgres:12.2"
+    volumes:
+      - portal-social-db:/var/lib/postgresql/data
+    ports:
+      - "5440:5432"
+    environment:
+      POSTGRES_USER: portal-social
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: portal-social
+
+    deploy:
+      resources:
+        limits:
+          memory: 50M
+
+  portal-social-recurring-tasks-app:
+    image: stainii/portal-recurring-tasks:1.0.0
+    volumes:
+      - portal-social-recurring-tasks-app/:/tmp
+    ports:
+      - 2010:2009
+    environment:
+      DEPLOYMENT_NAME: social-recurring-tasks
+      POSTGRES_URL: ${POSTGRES_URL_SOCIAL_RECURRING_TASKS}
+      POSTGRES_USERNAME: ${POSTGRES_USERNAME_SOCIAL_RECURRING_TASKS}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD_SOCIAL_RECURRING_TASKS}
+      RABBITMQ_HOST: ${RABBITMQ_HOST}
+      RABBITMQ_PORT: ${RABBITMQ_PORT}
+      RABBITMQ_USERNAME: ${RABBITMQ_USERNAME}
+      RABBITMQ_PASSWORD: ${RABBITMQ_PASSWORD}
+      JAVA_OPTS_RECURRING_TASKS: ${JAVA_OPTS_SOCIAL_RECURRING_TASKS}
+      EUREKA_SERVICE_URL: ${EUREKA_SERVICE_URL}
+    deploy:
+      resources:
+        limits:
+          memory: 400M
+
+  portal-social-recurring-tasks-db:
+    image: "postgres:12.2"
+    volumes:
+      - portal-social-recurring-tasks-db:/var/lib/postgresql/data
+    ports:
+      - "5439:5432"
+    environment:
+      POSTGRES_USER: portal-social-recurring-tasks
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: portal-social-recurring-tasks
+    deploy:
+      resources:
+        limits:
+          memory: 50M
+
+volumes:
+  portal-social-app:
+    external: true
+  portal-social-db:
+    external: true
+  portal-social-recurring-tasks-app:
+    external: true
+  portal-social-recurring-tasks-db:
+    external: true

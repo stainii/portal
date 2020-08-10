@@ -1,0 +1,21 @@
+version: '3'
+services:
+
+  portal-setlist-db:
+    image: "postgres:12.2"
+    volumes:
+      - portal-setlist-db:/var/lib/postgresql/data
+    ports:
+      - "5437:5432"
+    environment:
+      POSTGRES_USER: portal-setlist
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: portal-setlist
+    deploy:
+      resources:
+        limits:
+          memory: 50M
+
+volumes:
+  portal-setlist-db:
+    external: true

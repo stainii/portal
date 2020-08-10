@@ -35,10 +35,17 @@ While this seems contradictory to backend's microservice approach, I have [good 
 
 ## Development
 ### How do I run the application without Dockerizing my module again and again?
-You can run the Spring Boot applications from your IDE. If you need to have a running database/eureka/..., use
+You can run the Spring Boot applications from your IDE and run the databases/Eureka/... in Docker.
 
+In the folder ./docker-compose there are multiple docker-compose files that can be mixed.
+* `**-resources.yml` contain "the sidecars", like databases. The app itself is not included, it is expected that the developer starts it in its IDE.
+* `*-full.yml` contains all resources, including the app itself. Use this when you need the app running, but you're not actively working on it.
+* `docker-compose-tools.yml` contains helper software that a developer uses, like pgadmin.
+
+An example when working on Housagotchi:
 1. `docker swarm init` (if you have not done this before)
-1. `docker-compose -f docker-compose-resources-only.yml config > docker-compose-for-swarm.yml && docker stack deploy -c docker-compose-for-swarm.yml portal-resources-only`
+1. `docker-compose -f ./docker-compose/tools.yml -f ./docker-compose/core-resources.yml -f ./docker-compose/housagotchi-resources.yml config > docker-compose-for-swarm.yml && docker stack deploy -c docker-compose-for-swarm.yml portal-dev`
+1. Run Housagotchi, portal-front-end, portal-authentication and portal-proxy as jars in the IDE. *Provide some Spring config overrides, like security.jwt.secret. It should be the same for all running jars and containers.*
 
 ### Helpful resources
 * [List of Pluralsight courses](https://app.pluralsight.com/channels/details/f975a3ba-648f-401a-851c-0ab47fe552c1?s=1), explaining how to use the technologies and frameworks used by this portal.

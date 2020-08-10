@@ -29,7 +29,7 @@ services:
           memory: 100M
 
   portal-front-end-app:
-    image: stainii/portal-front-end:2.1.0
+    image: stainii/portal-front-end:2.4.0
     volumes:
       - portal-front-end-app:/tmp
       #- /app/portal/front-end/app/:/tmp
@@ -208,7 +208,7 @@ services:
           memory: 100M
 
   portal-authentication-app:
-    image: stainii/portal-authentication:1.0.1
+    image: stainii/portal-authentication:1.0.2
     volumes:
       - portal-authentication-app:/tmp
       #- /app/portal/authentication/app/:/tmp
@@ -224,7 +224,7 @@ services:
           memory: 400M
 
   portal-proxy:
-    image: stainii/portal-proxy:2.0.0
+    image: stainii/portal-proxy:2.0.1
     volumes:
       - portal-proxy:/tmp
     ports:
@@ -237,19 +237,6 @@ services:
       resources:
         limits:
           memory: 300M
-
-#  portal-image-editor:
-#    image: stainii/portal-image-editor:1.0.0-SNAPSHOT
-#    ports:
-#      - 3000:3000
-#    environment:
-#      HOSTNAME: portal-image-editor
-#      EUREKA_HOST: portal-eureka
-#    deploy:
-#      resources:
-#        limits:
-#          memory: 100M
-
 
   portal-todo-db:
     image: "mongo:4.2.1"

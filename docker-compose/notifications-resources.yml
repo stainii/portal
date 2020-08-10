@@ -1,0 +1,21 @@
+version: '3'
+services:
+
+  portal-notifications-db:
+    image: "postgres:10.5"
+    volumes:
+      - portal-notifications-db:/var/lib/postgresql/data
+    ports:
+      - "5434:5432"
+    environment:
+      POSTGRES_USER: portal-notifications
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: portal-notifications
+    deploy:
+      resources:
+        limits:
+          memory: 50M
+
+volumes:
+  portal-notifications-db:
+    external: true

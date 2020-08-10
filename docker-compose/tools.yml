@@ -1,0 +1,11 @@
+version: '3'
+services:
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-stijnhooft@hotmail.com}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+    volumes:
+      - /Users/stijnhooft/app/portal/pgadmin/:/root/.pgadmin
+    ports:
+      - "${PGADMIN_PORT:-5050}:80"
