@@ -1,0 +1,38 @@
+version: '3'
+services:
+  grafana:
+    image: grafana/grafana:5.4.3
+    ports:
+      - 3030:3000
+    volumes:
+      - /Users/stijnhooft/app/portal/grafana:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=password
+
+  prometheus:
+    image: prom/prometheus:v2.6.1
+    ports:
+      - 9090:9090
+    volumes:
+      - /Users/stijnhooft/projecten/portal/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - /Users/stijnhooft/app/portal/prometheus:/prometheus
+
+  node-exporter:
+    image: prom/node-exporter
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.sysfs=/host/sys'
+      - '--path.rootfs=/host'
+
+  cadvisor:
+    image: google/cadvisor:latest
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro

@@ -1,0 +1,29 @@
+scrape_configs:
+  - job_name: 'prometheus'
+    scrape_interval: 1m
+    static_configs:
+      - targets: ['localhost:9090']
+
+  - job_name: 'portal-front-end-app'
+    scrape_interval: 5s
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['portal-front-end-app:12001']
+
+  - job_name: 'grafana'
+    scrape_interval: 1m
+    metrics_path: '/metrics'
+    static_configs:
+      - targets: ['grafana:3030']
+
+  - job_name: 'node-exporter'
+    static_configs:
+      - targets: ['node-exporter:9100']
+
+  - job_name: 'cadvisor'
+    static_configs:
+      - targets: ['cadvisor:8080']
+
+  - job_name: 'docker'
+    static_configs:
+      - targets: ['docker.for.mac.host.internal:9323']
