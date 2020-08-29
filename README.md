@@ -1,9 +1,6 @@
 # Portal
 My personal portal, helping me simplify my life. Or at least, that's the purpose :)
 
-## Progress
-Check out the [Trello board](https://trello.com/b/LlzGuRM3/portal).
-
 ## How to run this application?
 To run and deploy the modules, each module is wrapped in a Docker container. All containers can be started at the same time with **Docker Swarm**.
 
