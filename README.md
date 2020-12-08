@@ -43,6 +43,3 @@ An example when working on Housagotchi:
 1. `docker swarm init` (if you have not done this before)
 1. `docker-compose -f ./docker-compose/tools.yml -f ./docker-compose/core-resources.yml -f ./docker-compose/housagotchi-resources.yml config > docker-compose-for-swarm.yml && docker stack deploy -c docker-compose-for-swarm.yml portal-dev`
 1. Run Housagotchi, portal-front-end, portal-authentication and portal-proxy as jars in the IDE. *Provide some Spring config overrides, like security.jwt.secret. It should be the same for all running jars and containers.*
-
-### Helpful resources
-* [List of Pluralsight courses](https://app.pluralsight.com/channels/details/f975a3ba-648f-401a-851c-0ab47fe552c1?s=1), explaining how to use the technologies and frameworks used by this portal.
