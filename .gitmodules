@@ -40,3 +40,9 @@
 [submodule "portal-weather"]
 	path = portal-weather
 	url = https://github.com/stainii/portal-weather.git
+[submodule "portal-location"]
+	path = portal-location
+	url = https://github.com/stainii/portal-location.git
+[submodule "portal-activity"]
+	path = portal-location
+	url = https://github.com/stainii/portal-activity.git

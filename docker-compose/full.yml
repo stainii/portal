@@ -353,6 +353,20 @@ services:
         limits:
           memory: 50M
 
+  portal-image:
+    image: "stainii/portal-image:1.0.1-SNAPSHOT"
+    volumes:
+      - portal-image:/app/data
+    ports:
+      - "3000:3000"
+    environment:
+      EUREKA_HOST: portal-eureka
+      HOST_NAME: portal-image
+    deploy:
+      resources:
+        limits:
+          memory: 150M
+
 volumes:
   portal-front-end-db:
     external: true
@@ -389,4 +403,6 @@ volumes:
   portal-setlist-db:
     external: true
   portal-setlist-app:
+    external: true
+  portal-image:
     external: true

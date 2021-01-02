@@ -1,4 +1,4 @@
-version: '3'
+version: '3.8'
 services:
 
   portal-front-end-db:
@@ -46,23 +46,10 @@ services:
         limits:
           memory: 50M
 
-  portal-eureka:
-    image: stainii/portal-eureka:1.0.2
-    volumes:
-      - portal-eureka:/tmp
-    ports:
-      - 8761:8761
-    deploy:
-      resources:
-        limits:
-          memory: 500M
-
 volumes:
   portal-front-end-db:
     external: true
   portal-authentication-db:
     external: true
   portal-rabbitmq:
-    external: true
-  portal-eureka:
     external: true

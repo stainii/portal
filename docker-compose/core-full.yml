@@ -1,0 +1,124 @@
+version: '3'
+services:
+
+  portal-front-end-db:
+    image: "postgres:10.5"
+    volumes:
+      - portal-front-end-db:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: ${POSTGRES_USERNAME_FRONT_END}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD_FRONT_END}
+      POSTGRES_DB: portal-front-end
+    deploy:
+      resources:
+        limits:
+          memory: 50M
+
+  portal-front-end-app:
+    image: stainii/portal-front-end:stijn2
+    volumes:
+      - portal-front-end-app:/tmp
+      #- /app/portal/front-end/app/:/tmp
+    ports:
+      - 2001:2001
+    environment:
+      POSTGRES_USERNAME_FRONT_END: ${POSTGRES_USERNAME_FRONT_END}
+      POSTGRES_PASSWORD_FRONT_END: ${POSTGRES_PASSWORD_FRONT_END}
+      POSTGRES_URL_FRONT_END: ${POSTGRES_URL_FRONT_END}
+      JAVA_OPTS_FRONT_END: ${JAVA_OPTS_FRONT_END}
+      JWT_SECRET: ${JWT_SECRET}
+      EUREKA_SERVICE_URL: ${EUREKA_SERVICE_URL}
+    deploy:
+      resources:
+        limits:
+          memory: 400M
+
+  portal-rabbitmq:
+    image: "rabbitmq:3-management"
+    hostname: "rabbit"
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    labels:
+      NAME: "rabbitmq"
+    volumes:
+      - portal-rabbitmq:/etc/rabbitmq/rabbitmq.config
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+
+  portal-authentication-db:
+    image: "postgres:11.0"
+    volumes:
+      - portal-authentication-db:/var/lib/postgresql/data
+    ports:
+      - "5435:5432"
+    environment:
+      POSTGRES_USER: portal-authentication
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: portal-authentication
+    deploy:
+      resources:
+        limits:
+          memory: 50M
+
+  portal-authentication-app:
+    image: stainii/portal-authentication:1.0.2
+    volumes:
+      - portal-authentication-app:/tmp
+      #- /app/portal/authentication/app/:/tmp
+    ports:
+      - 9100:9100
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET}
+      EUREKA_SERVICE_URL: ${EUREKA_SERVICE_URL}
+    deploy:
+      resources:
+        limits:
+          memory: 400M
+
+  portal-eureka:
+    image: stainii/portal-eureka:1.0.2
+    volumes:
+      - portal-eureka:/tmp
+    ports:
+      - "8761:8761"
+    deploy:
+      resources:
+        limits:
+          memory: 500M
+          
+  portal-proxy:
+    image: stainii/portal-proxy:2.0.1
+    volumes:
+      - portal-proxy:/tmp
+    ports:
+      - 2000:2000
+    environment:
+      JAVA_OPTS_PROXY: ${JAVA_OPTS_PROXY}
+      JWT_SECRET: ${JWT_SECRET}
+      EUREKA_SERVICE_URL: ${EUREKA_SERVICE_URL}
+    deploy:
+      resources:
+        limits:
+          memory: 300M
+
+volumes:
+  portal-front-end-db:
+    external: true
+  portal-front-end-app:
+    external: true
+  portal-authentication-db:
+    external: true
+  portal-authentication-app:
+    external: true
+  portal-rabbitmq:
+    external: true
+  portal-eureka:
+    external: true
+  portal-proxy:
+    external: true

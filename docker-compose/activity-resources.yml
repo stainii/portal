@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+
+  portal-activity-db:
+    image: "mongo:4.4.1"
+    ports:
+      - 27018:27017
+    environment:
+      - MONGO_INITDB_DATABASE=${DATABASE_NAME_ACTIVITY}
+      - MONGO_INITDB_ROOT_USERNAME=${DATABASE_USERNAME_ACTIVITY}
+      - MONGO_INITDB_ROOT_PASSWORD=${DATABASE_PASSWORD_ACTIVITY}
+    volumes:
+      - /Users/stijnhooft/projecten/portal/portal-activity/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d:ro
+      - portal-activity-db:/data/db
+    deploy:
+      resources:
+        limits:
+          memory: 50M
+
+
+volumes:
+  portal-activity-db:
+    external: true

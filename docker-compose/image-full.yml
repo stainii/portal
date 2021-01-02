@@ -2,14 +2,14 @@ version: '3'
 services:
 
   portal-image:
-    image: "stainii/portal-image:1.0.0-SNAPSHOT"
+    image: "stainii/portal-image:1.1.0-SNAPSHOT"
     volumes:
       - portal-image:/app/data
     ports:
       - "3000:3000"
     environment:
       EUREKA_HOST: portal-eureka
-      HOST_NAME: portal-image
+      HOSTNAME: localhost #portal-image
     deploy:
       resources:
         limits:

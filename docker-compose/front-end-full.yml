@@ -1,0 +1,42 @@
+version: '3'
+services:
+  portal-front-end-db:
+    image: "postgres:10.5"
+    volumes:
+      - portal-front-end-db:/var/lib/postgresql/data
+      #- /app/portal/front-end/db/data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: portal-front-end
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: portal-front-end
+    deploy:
+      resources:
+        limits:
+          memory: 100M
+
+  portal-front-end-app:
+    image: stainii/portal-front-end:stijn2
+    volumes:
+      - portal-front-end-app:/tmp
+      #- /app/portal/front-end/app/:/tmp
+    ports:
+      - 2001:2001
+    environment:
+      POSTGRES_USERNAME_FRONT_END: ${POSTGRES_USERNAME_FRONT_END}
+      POSTGRES_PASSWORD_FRONT_END: ${POSTGRES_PASSWORD_FRONT_END}
+      POSTGRES_URL_FRONT_END: ${POSTGRES_URL_FRONT_END}
+      JAVA_OPTS_FRONT_END: ${JAVA_OPTS_FRONT_END}
+      JWT_SECRET: ${JWT_SECRET}
+      EUREKA_SERVICE_URL: ${EUREKA_SERVICE_URL}
+    deploy:
+      resources:
+        limits:
+          memory: 400M
+
+volumes:
+  portal-front-end-db:
+    external: true
+  portal-front-end-app:
+      external: true

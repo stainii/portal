@@ -21,7 +21,9 @@
         <module>portal-todo</module>
         <module>portal-recurring-tasks</module>
         <module>portal-social</module>
+        <module>portal-location</module>
         <module>portal-weather</module>
+        <module>portal-activity</module>
     </modules>
 
     <repositories>
