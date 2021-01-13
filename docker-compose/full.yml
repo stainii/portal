@@ -119,11 +119,10 @@ services:
         limits:
           memory: 400M
 
-  portal-notifications-email-plugin:
-    image: stainii/portal-notifications-email-plugin:1.0.2
+  portal-email:
+    image: stainii/portal-email:1.0.0-SNAPSHOT
     volumes:
-      - portal-notifications-email-plugin:/tmp
-      #- /app/portal/notifications/email-plugin/:/tmp
+      - portal-email:/tmp
     ports:
       - 2004:2004
     environment:
@@ -136,7 +135,7 @@ services:
       EMAIL_PASSWORD: ${EMAIL_PASSWORD}
       EMAIL_SMTP_AUTH: ${EMAIL_SMTP_AUTH}
       EMAIL_STARTTLS: ${EMAIL_STARTTLS}
-      JAVA_OPTS_NOTIFICATIONS_EMAIL_PLUGIN: ${JAVA_OPTS_NOTIFICATIONS_EMAIL_PLUGIN}
+      JAVA_OPTS_EMAIL: ${JAVA_OPTS_EMAIL}
       EUREKA_SERVICE_URL: ${EUREKA_SERVICE_URL}
     deploy:
       resources:
@@ -380,7 +379,7 @@ volumes:
     external: true
   portal-notifications-app:
     external: true
-  portal-notifications-email-plugin:
+  portal-email:
     external: true
   portal-authentication-db:
     external: true

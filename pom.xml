@@ -16,7 +16,7 @@
         <module>portal-front-end</module>
         <module>portal-notifications-model</module>
         <module>portal-notifications</module>
-        <module>portal-notifications-email-plugin</module>
+        <module>portal-email</module>
         <module>portal-authentication</module>
         <module>portal-todo</module>
         <module>portal-recurring-tasks</module>
