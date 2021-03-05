@@ -2,28 +2,134 @@ scrape_configs:
   - job_name: 'prometheus'
     scrape_interval: 1m
     static_configs:
-      - targets: ['localhost:9090']
+      - targets: [ 'localhost:9090' ]
+
+  - job_name: 'portal-activity-app'
+    scrape_interval: 5s
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: [ 'portal-activity-app:2014' ]
+        labels:
+          application: 'activity'
+
+  - job_name: 'portal-authentication-app'
+    scrape_interval: 5s
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: [ 'portal-authentication-app:9100' ]
+        labels:
+          application: 'authentication'
+
+  - job_name: 'portal-email'
+    scrape_interval: 5s
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: [ 'portal-email:2004' ]
+        labels:
+          application: 'email'
+
+  - job_name: 'portal-eureka'
+    scrape_interval: 5s
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: [ 'portal-eureka:8761' ]
+        labels:
+          application: 'eureka'
 
   - job_name: 'portal-front-end-app'
     scrape_interval: 5s
     metrics_path: '/actuator/prometheus'
     static_configs:
-      - targets: ['portal-front-end-app:12001']
+      - targets: [ 'portal-front-end-app:12001' ]
+        labels:
+          application: 'front-end'
+
+  - job_name: 'portal-health-app'
+    scrape_interval: 5s
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: [ 'portal-health-app:2002' ]
+        labels:
+          application: 'health'
+
+  - job_name: 'portal-housagotchi-app'
+    scrape_interval: 5s
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: [ 'portal-housagotchi-app:2002' ]
+        labels:
+          application: 'housagotchi'
+
+  - job_name: 'portal-location'
+    scrape_interval: 5s
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: [ 'portal-location:2010' ]
+        labels:
+          application: 'location'
+
+  - job_name: 'portal-notifications'
+    scrape_interval: 5s
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: [ 'portal-notifications-app:2003' ]
+        labels:
+          application: 'notifications'
+
+  - job_name: 'portal-proxy'
+    scrape_interval: 5s
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: [ 'portal-proxy:2000' ]
+        labels:
+          application: 'proxy'
+
+  - job_name: 'portal-setlist-app'
+    scrape_interval: 5s
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: [ 'portal-setlist-app:2002' ]
+        labels:
+          application: 'setlist'
+
+  - job_name: 'portal-social-app'
+    scrape_interval: 5s
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: [ 'portal-social:2010' ]
+        labels:
+          application: 'social'
+
+  - job_name: 'portal-todo-app'
+    scrape_interval: 5s
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: [ 'portal-todo:2007' ]
+        labels:
+          application: 'todo'
+
+  - job_name: 'portal-weather'
+    scrape_interval: 5s
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: [ 'portal-weather:2008' ]
+        labels:
+          application: 'weather'
 
   - job_name: 'grafana'
     scrape_interval: 1m
     metrics_path: '/metrics'
     static_configs:
-      - targets: ['grafana:3030']
+      - targets: [ 'grafana:3030' ]
 
   - job_name: 'node-exporter'
     static_configs:
-      - targets: ['node-exporter:9100']
+      - targets: [ 'node-exporter:9100' ]
 
   - job_name: 'cadvisor'
     static_configs:
-      - targets: ['cadvisor:8080']
+      - targets: [ 'cadvisor:8080' ]
 
   - job_name: 'docker'
     static_configs:
-      - targets: ['docker.for.mac.host.internal:9323']
+      - targets: [ 'docker.for.mac.host.internal:9323' ]
