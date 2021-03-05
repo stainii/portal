@@ -59,7 +59,7 @@ services:
     environment:
       POSTGRES_USER: portal-authentication
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      POSTGRES_DB: portal-authentication
+      POSTGRES_URL: jdbc:postgresql://portal-authentication:5432/portal-authentication
     deploy:
       resources:
         limits:
