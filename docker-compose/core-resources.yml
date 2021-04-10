@@ -1,6 +1,5 @@
 version: '3.8'
 services:
-
   portal-front-end-db:
     image: "postgres:10.5"
     volumes:

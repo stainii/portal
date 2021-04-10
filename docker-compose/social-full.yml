@@ -39,7 +39,7 @@ services:
           memory: 50M
 
   portal-social-recurring-tasks-app:
-    image: stainii/portal-recurring-tasks:1.0.0
+    image: stainii/portal-recurring-tasks:1.0.1-SNAPSHOT
     volumes:
       - portal-social-recurring-tasks-app/:/tmp
     ports:
@@ -55,6 +55,7 @@ services:
       RABBITMQ_PASSWORD: ${RABBITMQ_PASSWORD}
       JAVA_OPTS_RECURRING_TASKS: ${JAVA_OPTS_SOCIAL_RECURRING_TASKS}
       EUREKA_SERVICE_URL: ${EUREKA_SERVICE_URL}
+      PUBLISH_OVERTIME_RECURRING_TASKS_CRON: ${PUBLISH_OVERTIME_RECURRING_TASKS_CRON}
     deploy:
       resources:
         limits:
