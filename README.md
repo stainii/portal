@@ -5,9 +5,9 @@ My personal portal, helping me simplify my life. Or at least, that's the purpose
 To run and deploy the modules, each module is wrapped in a Docker container. All containers can be started at the same time with **Docker Swarm**.
 
 1. Create a file with the name `.env`, containing secrets (like passwords). Have a look at `.env-example` to know the expected content.
-1. Adapt the `docker-compose.yml` file to your needs.
+1. Adapt the file `docker-compose/full.yml` file to your needs.
 1. `docker swarm init` (if you did not do this before)
-1. `docker-compose config > docker-compose-for-swarm.yml && docker stack deploy -c docker-compose-for-swarm.yml portal`
+1. `docker-compose -f docker-compose/full.yml config > docker-compose-for-swarm.yml && docker stack deploy -c docker-compose-for-swarm.yml portal`
 
 ## Architecture
 ![High-level-architecure](documentation/high-level-architecture.png)
