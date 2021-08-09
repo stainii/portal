@@ -2,12 +2,13 @@
 My personal portal, helping me simplify my life. Or at least, that's the purpose :)
 
 ## How to run this application?
-To run and deploy the modules, each module is wrapped in a Docker container. All containers can be started at the same time with **Docker Swarm**.
+TODO
 
-1. Create a file with the name `.env`, containing secrets (like passwords). Have a look at `.env-example` to know the expected content.
-1. Adapt the file `docker-compose/full.yml` file to your needs.
-1. `docker swarm init` (if you did not do this before)
-1. `docker-compose -f docker-compose/full.yml config > docker-compose-for-swarm.yml && docker stack deploy -c docker-compose-for-swarm.yml portal`
+`multipass mount /my-shared-folder microk8s-vm`
+
+`sudo microk8s enable dns`  
+`sudo microk8s enable traefik`   
+`sudo microk8s enable ingress`  
 
 ## Architecture
 ![High-level-architecure](documentation/high-level-architecture.png)
@@ -29,17 +30,7 @@ There is a **dedicated front-end module** which contains the front-end component
 
 While this seems contradictory to backend's microservice approach, I have [good reasons](https://github.com/stainii/portal-front-end) for this set-up. This thought process is written out in [the README file of the front-end-module](https://github.com/stainii/portal-front-end).
 
-
 ## Development
-### How do I run the application without Dockerizing my module again and again?
+TODO
+
 You can run the Spring Boot applications from your IDE and run the databases/Eureka/... in Docker.
-
-In the folder ./docker-compose there are multiple docker-compose files that can be mixed.
-* `**-resources.yml` contain "the sidecars", like databases. The app itself is not included, it is expected that the developer starts it in its IDE.
-* `*-full.yml` contains all resources, including the app itself. Use this when you need the app running, but you're not actively working on it.
-* `docker-compose-tools.yml` contains helper software that a developer uses, like pgadmin.
-
-An example when working on Housagotchi:
-1. `docker swarm init` (if you have not done this before)
-1. `docker-compose -f ./docker-compose/core-resources.yml -f ./docker-compose/housagotchi-resources.yml config > docker-compose-for-swarm.yml && docker stack deploy -c docker-compose-for-swarm.yml portal-dev`
-1. Run Housagotchi, portal-front-end, portal-authentication and portal-proxy as jars in the IDE. *Provide some Spring config overrides, like security.jwt.secret. It should be the same for all running jars and containers.*
