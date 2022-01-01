@@ -7,6 +7,7 @@ etc/
 node/
 src/test/
 docker-compose-for-swarm.yml
+portal-front-end/src/main/web/.angular/cache
 
 #secret files
 .env
