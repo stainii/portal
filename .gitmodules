@@ -22,9 +22,6 @@
 [submodule "portal-proxy"]
 	path = portal-proxy
 	url = https://github.com/stainii/portal-proxy
-[submodule "portal-portfolio"]
-    path = portal-portfolio
-    url = https://github.com/stainii/portal-portfolio
 [submodule "portal-todo"]
     path = portal-todo
     url = https://github.com/stainii/portal-todo
