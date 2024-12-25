@@ -19,9 +19,6 @@
 [submodule "portal-notifications-email-plugin"]
 	path = portal-notifications-email-plugin
 	url = https://github.com/stainii/portal-notifications-email-plugin
-[submodule "portal-notifications-model"]
-	path = portal-notifications-model
-	url = https://github.com/stainii/portal-notifications-model
 [submodule "portal-proxy"]
 	path = portal-proxy
 	url = https://github.com/stainii/portal-proxy
